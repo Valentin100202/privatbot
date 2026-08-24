@@ -95,7 +95,8 @@ async def process_successful_payment(message: types.Message):
     )
 
 async def on_startup(bot: Bot):
-    await bot.set_webhook(WEBHOOK_URL)
+webhook_url = f"https://{os.getenv('WEBHOOK_HOST')}{WEBHOOK_PATH}"
+    await bot.set_webhook(webhook_url)
 
 def main():
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
@@ -111,7 +112,6 @@ def main():
     webhook_requests_handler.register(app, path=WEBHOOK_PATH)
     
     setup_application(app, dp, bot=bot)
-    # fix
     
     web.run_app(app, host="0.0.0.0", port=PORT)
 
