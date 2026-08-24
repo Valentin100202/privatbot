@@ -111,6 +111,7 @@ def main():
     webhook_requests_handler.register(app, path=WEBHOOK_PATH)
     
     setup_application(app, dp, bot=bot)
+    # fix
     
     web.run_app(app, host="0.0.0.0", port=PORT)
 
