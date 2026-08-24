@@ -60,7 +60,7 @@ async def process_buy_forever(callback: types.CallbackQuery):
 @dp.pre_checkout_query()
 async def process_pre_checkout_query(pre_checkout_query: PreCheckoutQuery):
     await bot.answer_pre_checkout_query(pre_checkout_query.id, ok=True)
-    @dp.message(F.successful_payment)
+@dp.message(F.successful_payment)
 async def process_successful_payment(message: types.Message):
     payment_info = message.successful_payment
     total_amount = payment_info.total_amount
